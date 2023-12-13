@@ -17,7 +17,7 @@ function Header() {
                             <LoginIcon /> Đăng nhập / Đăng ký
                         </a>
                     ) : (
-                        <a href="/register">
+                        <a href="/logout">
                             <LogoutIcon /> Đăng xuất
                         </a>
 

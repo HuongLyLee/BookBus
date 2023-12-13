@@ -13,6 +13,7 @@ function Login() {
     const auth = getAuth();
     const [user, setUser] = useAtom(userAtom)
     const history = useHistory()
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -51,6 +52,8 @@ function Login() {
                 const errorMessage = error.message;
                 console.error("Lỗi đăng nhập:", errorCode, errorMessage);
             })
+
+            setUser((prevUser) => ({ ...prevUser, isLoggedIn: true, username: 'exampleUser' }));
     }
 
     return (

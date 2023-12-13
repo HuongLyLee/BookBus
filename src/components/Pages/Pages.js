@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer"
 import Schedule from "../Schedule/Schedule"
 import Information from "../Information/Information"
 import Login from "../Header/Login"
+import Logout from "../Header/Logout"
 import Register from "../Header/Register"
 
 
@@ -22,6 +23,7 @@ const Pages = () => {
                     <Route exact path='/blogs' component={Information} />
                     <Route exact path='/contact' component={Information} />
                     <Route exact path='/login' component={Login} />
+                    <Route exact path='/logout' component={Logout} />
                     <Route exact path='/register' component={Register} />
                 </Switch>
 
