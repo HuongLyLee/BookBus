@@ -1,0 +1,24 @@
+[debug] [2023-12-05T07:46:02.643Z] ----------------------------------------------------------------------
+[debug] [2023-12-05T07:46:02.646Z] Command:       /usr/local/Cellar/node/21.1.0/bin/node /usr/local/bin/firebase init
+[debug] [2023-12-05T07:46:02.647Z] CLI Version:   12.9.1
+[debug] [2023-12-05T07:46:02.647Z] Platform:      darwin
+[debug] [2023-12-05T07:46:02.647Z] Node Version:  v21.1.0
+[debug] [2023-12-05T07:46:02.647Z] Time:          Tue Dec 05 2023 14:46:02 GMT+0700 (GMT+07:00)
+[debug] [2023-12-05T07:46:02.648Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-05T07:46:02.651Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-12-05T07:46:02.692Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-05T07:46:02.692Z] > authorizing via signed-in user (lethihuongly1206@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/cf/book-bus
+
+[debug] [2023-12-05T07:46:03.157Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-12-05T07:46:03.158Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
