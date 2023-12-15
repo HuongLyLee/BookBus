@@ -31,6 +31,7 @@ function Header() {
                 <a href="/information"> Tra cứu vé </a>
                 <a href="/blogs"> Tin tức </a>
                 <a href="/contact"> Về chúng tôi </a>
+                <a href="/admin"> Admin </a>
             </div>
 
         </div>

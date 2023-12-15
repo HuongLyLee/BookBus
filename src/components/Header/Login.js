@@ -5,8 +5,8 @@ import { getDoc } from 'firebase/firestore';
 import { userDocRef } from '../../firebase/userRef';
 import { useAtom } from 'jotai';
 import { userAtom } from '../../store/user.atom';
-import Home from '../Home/Home';
 import { useHistory } from 'react-router-dom';
+import { Home } from '@mui/icons-material';
 
 function Login() {
 
