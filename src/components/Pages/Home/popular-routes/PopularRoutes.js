@@ -41,7 +41,7 @@ function PopularRoutes() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-                 Tuyến xe từ Thanh Hoá
+                 Tuyến xe từ Hà Nội
               </Typography>
             </CardContent>
           </CardActionArea>

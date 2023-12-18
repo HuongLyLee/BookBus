@@ -18,7 +18,6 @@ const AddDataCar = ({setCarData, handleDialogClose}) => {
   const handleSubmit = async (e) => {
     try {
       const carsCollectionRef = collection(db, 'cars');
-
       const newCarRef = await addDoc(carsCollectionRef, newCarData);
 
       const newCarDoc = await getDocs(carsCollectionRef);

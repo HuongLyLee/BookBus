@@ -50,7 +50,7 @@ export default function AdminPage() {
     };
 
     return (
-        <div className='min-h-[600px] m-6'>
+        <div className='m-6'>
 
             <h1> <HomeIcon/> Trang chủ Admin </h1>
 

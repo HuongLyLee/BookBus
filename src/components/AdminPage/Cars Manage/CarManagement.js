@@ -53,7 +53,6 @@ export default function CarManagement() {
   };
 
   const handleDialogClose = () => {
-    console.log(123);
     setOpenDialog(false);
   };
 
