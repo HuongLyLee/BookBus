@@ -3,6 +3,7 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
+import TablePagination from '@mui/material/TablePagination';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
@@ -20,6 +21,26 @@ export default function CarManagement() {
 
   const [carData, setCarData] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
+
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(8)
+
+  const handleAddNew = () => {
+    setOpenDialog(true);
+  };
+
+  const handleDialogClose = () => {
+    setOpenDialog(false);
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  }
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(parseInt(event.target.valur, 10));
+    setPage(0);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,13 +69,6 @@ export default function CarManagement() {
     fetchData();
   }, []);
 
-  const handleAddNew = () => {
-    setOpenDialog(true);
-  };
-
-  const handleDialogClose = () => {
-    setOpenDialog(false);
-  };
 
   return (
     <div>
@@ -68,7 +82,7 @@ export default function CarManagement() {
       <Dialog open={openDialog} onClose={handleDialogClose}>
         <DialogTitle> Thêm thông tin xe </DialogTitle>
         <DialogContent>
-          <AddDataCar setCarData={setCarData} handleDialogClose={handleDialogClose}/>
+          <AddDataCar setCarData={setCarData} handleDialogClose={handleDialogClose} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDialogClose}> Hủy </Button>
@@ -88,8 +102,14 @@ export default function CarManagement() {
           </TableHead>
 
           <TableBody>
-            {carData.map((car) => (
-              <TableRow key={car.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            {(rowsPerPage > 0
+              ? carData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : carData
+            ).map((car) => (
+              <TableRow
+                key={car.name}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
                 <TableCell component="th" scope="row"> {car.licensePlate} </TableCell>
                 <TableCell align="right">{car.carCategory}</TableCell>
                 <TableCell align="right">{car.seats}</TableCell>
@@ -100,6 +120,17 @@ export default function CarManagement() {
 
         </Table>
       </TableContainer>
+
+      <TablePagination
+        rowsPerPageOptions={[8, 16, 24]}
+        component="div"
+        count={carData.length}
+        rowsPerPage={rowsPerPage}
+        labelRowsPerPage={<p>Số hàng mỗi trang</p>}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </div >
 
   );

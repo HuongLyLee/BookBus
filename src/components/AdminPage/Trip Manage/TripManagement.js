@@ -3,6 +3,7 @@ import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
+import TablePagination from '@mui/material/TablePagination';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
@@ -21,6 +22,10 @@ export default function TripManagement() {
   const [tripData, setTripData] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
 
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(8);
+
+
   const handleAddNew = () => {
     setOpenDialog(true);
   };
@@ -29,20 +34,30 @@ export default function TripManagement() {
     setOpenDialog(false);
   };
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = event => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+
   useEffect(() => {
-    const fetchData = async() => {
+    const fetchData = async () => {
       try {
         const tripsCollectionRef = collection(db, 'trips');
         const tripsSnapshot = await getDocs(tripsCollectionRef);
 
-        if(tripsSnapshot.size === 0) {
+        if (tripsSnapshot.size === 0) {
           await setDoc(tripsCollectionRef.doc(), {
             time: '',
             departure: '',
             destination: '',
-            ticketPrice:'',
-            vehicleType:'',
-            road:'',
+            ticketPrice: '',
+            vehicleType: '',
+            road: '',
           });
           console.log('Đã tạo collection "trips" và thêm dữ liệu mẫu.');
         }
@@ -90,8 +105,11 @@ export default function TripManagement() {
             </TableRow>
           </TableHead>
 
-          <TableBody> 
-            {tripData.map((trip) => (
+          <TableBody>
+            {(rowsPerPage > 0
+              ? tripData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : tripData
+            ).map((trip) => (
               <TableRow
                 key={trip.name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -107,7 +125,17 @@ export default function TripManagement() {
 
         </Table>
       </TableContainer>
-    </div>
 
+      <TablePagination
+        rowsPerPageOptions={[8, 16, 24]}
+        component="div"
+        count={tripData.length}
+        rowsPerPage={rowsPerPage}
+        labelRowsPerPage={<p>Số hàng mỗi trang</p>}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
+    </div>
   );
 }

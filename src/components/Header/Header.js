@@ -8,22 +8,7 @@ function Header() {
     const [user, setUser] = useAtom(userAtom)
 
     return (
-        <div className='bg-[#06b6d4] h-[150px] p-6'>
-
-            <div className='flex justify-end p-4'>
-                <div className='border border-solid border-black bg-white rounded-xl p-2'>
-                    {!user ? (
-                        <a href="/login">
-                            <LoginIcon /> Đăng nhập / Đăng ký
-                        </a>
-                    ) : (
-                        <a href="/logout">
-                            <LogoutIcon /> Đăng xuất
-                        </a>
-
-                    )}
-                </div>
-            </div>
+        <div className='bg-[#06b6d4] h-[90px] p-6'>
 
             <div className='flex gap-6 justify-around text-white text-base font-bold'>
                 <a href="/"> Trang chủ </a>
@@ -32,8 +17,19 @@ function Header() {
                 <a href="/blogs"> Tin tức </a>
                 <a href="/contact"> Về chúng tôi </a>
                 <a href="/admin"> Admin </a>
-            </div>
 
+                <div>
+                    {!user ? (
+                        <a href="/login">
+                            <LoginIcon /> Đăng nhập / Đăng ký
+                        </a>
+                    ) : (
+                        <a href="/logout">
+                            <LogoutIcon /> Đăng xuất
+                        </a>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

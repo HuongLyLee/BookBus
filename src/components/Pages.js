@@ -15,22 +15,30 @@ const Pages = () => {
     return (
         <>
             <Router>
-                <Header />
+                <div className="flex flex-col h-screen">
+                    <div>
+                        <Header />
+                    </div>
+                    
+                    <div className="flex-grow p-4 overflow-y-auto">
+                        <Switch>
+                            <Route exact path='/' component={Home} />
+                            <Route exact path='/schedule' component={Schedule} />
+                            <Route exact path='/information' component={Information} />
+                            <Route exact path='/blogs' component={Information} />
+                            <Route exact path='/contact' component={Information} />
+                            <Route exact path='/login' component={Login} />
+                            <Route exact path='/logout' component={Logout} />
+                            <Route exact path='/register' component={Register} />
+                            <Route exact path='/register' component={Register} />
+                            <Route exact path="/admin" component={AdminPage} />
+                        </Switch>
+                    </div>
 
-                <Switch>
-                    <Route exact path='/' component={Home} />
-                    <Route exact path='/schedule' component={Schedule} />
-                    <Route exact path='/information' component={Information} />
-                    <Route exact path='/blogs' component={Information} />
-                    <Route exact path='/contact' component={Information} />
-                    <Route exact path='/login' component={Login} />
-                    <Route exact path='/logout' component={Logout} />
-                    <Route exact path='/register' component={Register} />
-                    <Route exact path='/register' component={Register} />
-                    <Route exact path="/admin" component={AdminPage} />
-                </Switch>
-
-                <Footer />
+                    <div>
+                        <Footer />
+                    </div>
+                </div>
             </Router>
         </>
     )
