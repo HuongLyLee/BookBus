@@ -47,9 +47,7 @@ const AddDataTrip = ({ openDialog, setTripData, handleDialogClose }) => {
         <Dialog open={openDialog} onClose={handleDialogClose}>
             <DialogTitle> Thêm thông tin xe </DialogTitle>
             <DialogContent>
-                <div
-                    className='block m-4'
-                >
+                <div className='block m-4'>
                     <div>
                         <input type="time" name="time" placeholder="Thời gian"
                             value={newTripData.time}

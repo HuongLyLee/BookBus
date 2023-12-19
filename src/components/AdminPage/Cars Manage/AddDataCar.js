@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../firebaseConfig';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
 
-const AddDataCar = ({setCarData, handleDialogClose}) => {
+const AddDataCar = ({ openDialog, setCarData, handleDialogClose }) => {
   const [newCarData, setNewCarData] = useState({
     licensePlate: '',
     carCategory: '',
@@ -38,34 +43,40 @@ const AddDataCar = ({setCarData, handleDialogClose}) => {
   };
 
   return (
-    <div
-      className='block m-4'
-    >
-      <div>
-        <input type="text" placeholder="Biển số xe" name="licensePlate"
-          value={newCarData.licensePlate}
-          onChange={handleInputChange}
-          className='border border-black rounded-lg p-2'
-        />
-        <input type="text" name="carCategory" placeholder="Loại xe"
-          value={newCarData.carCategory}
-          onChange={handleInputChange}
-          className='border border-black rounded-lg p-2 m-2'
-        />
-        <input type="text" name="seats" placeholder="Số ghế"
-          value={newCarData.seats}
-          onChange={handleInputChange}
-          className='border border-black rounded-lg p-2'
-        />
-        <input type="text" name="driverInfo" placeholder="Thông tin tài xế"
-          value={newCarData.driverInfo}
-          onChange={handleInputChange}
-          className='border border-black rounded-lg p-2 m-2'
-        />
-      </div>
+    <Dialog open={openDialog} onClose={handleDialogClose}>
+      <DialogTitle> Thêm thông tin xe </DialogTitle>
+      <DialogContent>
+        <div className='block m-4'>
+          <div>
+            <input type="text" placeholder="Biển số xe" name="licensePlate"
+              value={newCarData.licensePlate}
+              onChange={handleInputChange}
+              className='border border-black rounded-lg p-2'
+            />
+            <input type="text" name="carCategory" placeholder="Loại xe"
+              value={newCarData.carCategory}
+              onChange={handleInputChange}
+              className='border border-black rounded-lg p-2 m-2'
+            />
+            <input type="text" name="seats" placeholder="Số ghế"
+              value={newCarData.seats}
+              onChange={handleInputChange}
+              className='border border-black rounded-lg p-2'
+            />
+            <input type="text" name="driverInfo" placeholder="Thông tin tài xế"
+              value={newCarData.driverInfo}
+              onChange={handleInputChange}
+              className='border border-black rounded-lg p-2 m-2'
+            />
+          </div>
 
-      <button className='border border-solid bg-teal-600 p-2 rounded-lg float-right' onClick={handleSubmit}> Thêm mới </button>
-    </div>
+          <button className='border border-solid bg-teal-600 p-2 rounded-lg float-right' onClick={handleSubmit}> Thêm mới </button>
+        </div>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleDialogClose}> Hủy </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 

@@ -11,7 +11,6 @@ import AddDataTrip from './AddDataTrip';
 import { collection, getDocs, setDoc } from 'firebase/firestore';
 import { db } from '../../../firebaseConfig';
 
-
 export default function TripManagement() {
 
   const [tripData, setTripData] = useState([]);

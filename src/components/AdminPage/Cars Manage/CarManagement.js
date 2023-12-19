@@ -10,12 +10,6 @@ import Paper from '@mui/material/Paper';
 import { collection, getDocs, setDoc } from 'firebase/firestore';
 import { db } from '../../../firebaseConfig';
 import AddDataCar from './AddDataCar';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
-
 
 export default function CarManagement() {
 
@@ -73,21 +67,10 @@ export default function CarManagement() {
   return (
     <div>
 
-      <button className='border border-solid bg-teal-600 p-2 rounded-lg float-right'
-        onClick={handleAddNew}
-      >
+      <button className='border border-solid bg-teal-600 p-2 rounded-lg float-right' onClick={handleAddNew}>
         Thêm mới
       </button>
-
-      <Dialog open={openDialog} onClose={handleDialogClose}>
-        <DialogTitle> Thêm thông tin xe </DialogTitle>
-        <DialogContent>
-          <AddDataCar setCarData={setCarData} handleDialogClose={handleDialogClose} />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose}> Hủy </Button>
-        </DialogActions>
-      </Dialog>
+      <AddDataCar openDialog={openDialog} setCarData={setCarData} handleDialogClose={handleDialogClose} />
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
