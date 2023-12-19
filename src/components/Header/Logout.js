@@ -11,18 +11,18 @@ import { userAtom } from '../../store/user.atom';
 
 function Logout() {
 
+    const [user, setUser] = useAtom(userAtom)
     const [open, setOpen] = React.useState(true);
     const history = useHistory()
-    const [user, setUser] = useAtom(userAtom)
 
     const handleClickOpen = () => {
         setOpen(true);
     }
 
     const handleLogout = () => {
-
         setUser(null);
         localStorage.removeItem('user');
+        setUser('')
         history.push('/login')
     };
 

@@ -52,8 +52,6 @@ function Login() {
                 const errorMessage = error.message;
                 console.error("Lỗi đăng nhập:", errorCode, errorMessage);
             })
-
-            setUser((prevUser) => ({ ...prevUser, isLoggedIn: true, username: 'exampleUser' }));
     }
 
     return (

@@ -7,11 +7,6 @@ import TablePagination from '@mui/material/TablePagination';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
 import AddDataTrip from './AddDataTrip';
 import { collection, getDocs, setDoc } from 'firebase/firestore';
 import { db } from '../../../firebaseConfig';
@@ -76,21 +71,11 @@ export default function TripManagement() {
   return (
 
     <div>
-      <button className='border border-solid bg-teal-600 p-2 rounded-lg float-right'
-        onClick={handleAddNew}
-      >
+      <button className='border border-solid bg-teal-600 p-2 rounded-lg float-right' onClick={handleAddNew}>
         Thêm mới
       </button>
+      <AddDataTrip openDialog={openDialog} setTripData={setTripData} handleDialogClose={handleDialogClose} />
 
-      <Dialog open={openDialog} onClose={handleDialogClose}>
-        <DialogTitle> Thêm thông tin xe </DialogTitle>
-        <DialogContent>
-          <AddDataTrip setTripData={setTripData} handleDialogClose={handleDialogClose} />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose}> Hủy </Button>
-        </DialogActions>
-      </Dialog>
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

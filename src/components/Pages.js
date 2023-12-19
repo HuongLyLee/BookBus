@@ -9,6 +9,7 @@ import Schedule from "./Pages/Schedule/Schedule"
 import Information from "./Pages/Information/Information"
 import AdminPage from "./AdminPage/AdminPage"
 import Home from "./Pages/Home/Home"
+import AddDataTrip from "./AdminPage/Trip Manage/AddDataTrip"
 
 
 const Pages = () => {
@@ -32,6 +33,7 @@ const Pages = () => {
                             <Route exact path='/register' component={Register} />
                             <Route exact path='/register' component={Register} />
                             <Route exact path="/admin" component={AdminPage} />
+                            <Route exact path="/addTripData" component={AddDataTrip} />
                         </Switch>
                     </div>
 
