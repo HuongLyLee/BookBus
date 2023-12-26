@@ -9,7 +9,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { collection, getDocs, setDoc } from 'firebase/firestore';
 import { db } from '../../../firebaseConfig';
-import AddDataCar from './AddDataCar';
+import AddDataCar from '../CarManage/AddDataCar';
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditingDataCar from './EditingDataCar';
 
 export default function CarManagement() {
 
@@ -19,12 +23,22 @@ export default function CarManagement() {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(8)
 
+  const [selectedCar, setSelectedCar] = useState(null);
+
+
   const handleAddNew = () => {
+    setSelectedCar(null);
+    setOpenDialog(true);
+  };
+
+  const handleEdit = (car) => {
+    setSelectedCar(car);
     setOpenDialog(true);
   };
 
   const handleDialogClose = () => {
     setOpenDialog(false);
+    setSelectedCar(null);
   };
 
   const handleChangePage = (event, newPage) => {
@@ -67,10 +81,15 @@ export default function CarManagement() {
   return (
     <div>
 
-      <button className='border border-solid bg-teal-600 p-2 rounded-lg float-right' onClick={handleAddNew}>
+      <button className='border border-solid bg-teal-600 p-2 rounded-lg float-right text-white' onClick={handleAddNew}>
         Thêm mới
       </button>
-      <AddDataCar openDialog={openDialog} setCarData={setCarData} handleDialogClose={handleDialogClose} />
+      <AddDataCar
+        openDialog={openDialog}
+        setCarData={setCarData}
+        handleDialogClose={handleDialogClose}
+        selectedCar={selectedCar}
+      />
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -81,6 +100,8 @@ export default function CarManagement() {
               <TableCell align="right"> Loại xe </TableCell>
               <TableCell align="right"> Số ghế </TableCell>
               <TableCell align="right"> Thông tin tài xế </TableCell>
+              <TableCell align="right"> Cập nhật </TableCell>
+              <TableCell align="right"> Xoá </TableCell>
             </TableRow>
           </TableHead>
 
@@ -97,6 +118,13 @@ export default function CarManagement() {
                 <TableCell align="right">{car.carCategory}</TableCell>
                 <TableCell align="right">{car.seats}</TableCell>
                 <TableCell align="right">{car.driverInfo}</TableCell>
+                <TableCell align="right">
+                  <Button onClick={() => handleEdit(car)}> <EditIcon /> </Button>
+                  <EditingDataCar openDialog={openDialog} setCarData={setCarData} handleDialogClose={handleDialogClose} />
+                </TableCell>
+                <TableCell align="right">
+                  <Button onClick={''}> <DeleteIcon /> </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

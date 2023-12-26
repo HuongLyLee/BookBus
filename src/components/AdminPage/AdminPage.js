@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import HomeIcon from '@mui/icons-material/Home';
 import UserManagement from './User Manage/UserManagement';
-import TripManagement from './Trip Manage/TripManagement';
-import CarManagement from './Cars Manage/CarManagement';
+import TripManagement from './TripManage/TripManagement';
+import CarManagement from './CarManage/CarManagement';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;

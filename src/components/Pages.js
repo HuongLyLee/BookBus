@@ -9,7 +9,7 @@ import Schedule from "./Pages/Schedule/Schedule"
 import Information from "./Pages/Information/Information"
 import AdminPage from "./AdminPage/AdminPage"
 import Home from "./Pages/Home/Home"
-import AddDataTrip from "./AdminPage/Trip Manage/AddDataTrip"
+import AddDataTrip from "./AdminPage/TripManage/AddDataTrip"
 
 
 const Pages = () => {
